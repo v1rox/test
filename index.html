@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReconQuest Map Creator</title>
     
-    <!-- Preload critical assets to prevent race conditions -->
-    <link rel="preload" href="/test/assets/foresttrees-809bdcca.png" as="image" fetchpriority="high">
-    <link rel="preload" href="/test/assets/bogtrees-08d1a72f.png" as="image" fetchpriority="high">
-    <link rel="preload" href="/test/assets/forest-e1a7bb26.png" as="image" fetchpriority="high">
-    <link rel="preload" href="/test/assets/bog-2bcb3dc1.png" as="image" fetchpriority="high">
+    <!-- Suppress preload warnings by using correct attributes -->
+    <link rel="preconnect" href="https://v1rox.github.io">
+    <!-- Explicitly using the paths that the browser will look for -->
+    <link rel="preload" as="fetch" crossorigin="anonymous" href="/test/src/assets/foresttrees.png">
+    <link rel="preload" as="fetch" crossorigin="anonymous" href="/test/src/assets/bogtrees.png">
+    <link rel="preload" as="fetch" crossorigin="anonymous" href="/test/src/assets/forest.png">
+    <link rel="preload" as="fetch" crossorigin="anonymous" href="/test/src/assets/bog.png">
     
   <script type="module" crossorigin src="/test/assets/main-3b116ae6.js"></script>
   <link rel="stylesheet" href="/test/assets/index-63b623f2.css">
