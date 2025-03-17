@@ -22,5 +22,35 @@
         </div>
     </div>
     
+    <script>
+        // Fix absolute paths for GitHub Pages
+        (function() {
+            // Create a proxy for the Image constructor
+            const originalImage = window.Image;
+            window.Image = function() {
+                const img = new originalImage(...arguments);
+                const originalSrcDescriptor = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
+
+                // Override the src property
+                Object.defineProperty(img, 'src', {
+                    get: function() {
+                        return originalSrcDescriptor.get.call(this);
+                    },
+                    set: function(value) {
+                        // If it's an absolute path starting with /src/assets, prepend /test
+                        if (value && typeof value === 'string' && value.startsWith('/src/assets/')) {
+                            value = '/test' + value;
+                        }
+                        return originalSrcDescriptor.set.call(this, value);
+                    }
+                });
+
+                return img;
+            };
+            window.Image.prototype = originalImage.prototype;
+        })();
+    </script>
+    
+    
 </body>
 </html> 
