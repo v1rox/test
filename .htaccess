@@ -1,0 +1,7 @@
+
+# Handle requests for /src/assets/* by rewriting to the actual file location
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^src/assets/(.*)$ src/assets/$1 [L]
+</IfModule>

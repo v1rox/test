@@ -5,34 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReconQuest Map Creator</title>
     
-    <script>
-        // Fix absolute paths for GitHub Pages
-        (function() {
-            // Create a proxy for the Image constructor
-            const originalImage = window.Image;
-            window.Image = function() {
-                const img = new originalImage(...arguments);
-                const originalSrcDescriptor = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
-                
-                // Override the src property
-                Object.defineProperty(img, 'src', {
-                    get: function() {
-                        return originalSrcDescriptor.get.call(this);
-                    },
-                    set: function(value) {
-                        // If it's an absolute path starting with /src/assets, prepend /test
-                        if (value && typeof value === 'string' && value.startsWith('/src/assets/')) {
-                            value = '/test' + value;
-                        }
-                        return originalSrcDescriptor.set.call(this, value);
-                    }
-                });
-                
-                return img;
-            };
-            window.Image.prototype = originalImage.prototype;
-        })();
-    </script>
+    <!-- Preload critical assets to prevent race conditions -->
+    <link rel="preload" href="/test/assets/foresttrees-809bdcca.png" as="image">
+    <link rel="preload" href="/test/assets/bogtrees-08d1a72f.png" as="image">
+    <link rel="preload" href="/test/assets/forest-e1a7bb26.png" as="image">
+    <link rel="preload" href="/test/assets/bog-2bcb3dc1.png" as="image">
+    
   <script type="module" crossorigin src="/test/assets/main-b6a29ef7.js"></script>
   <link rel="stylesheet" href="/test/assets/index-63b623f2.css">
 </head>
